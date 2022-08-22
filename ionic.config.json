@@ -1,0 +1,7 @@
+{
+  "name": "ionicBurgerEagle",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
