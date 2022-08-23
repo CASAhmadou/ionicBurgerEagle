@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>catalogue</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+    <ion-item class="btn">
+      <ion-button fill="outline" (click)="getType()" routerLink="/catalogue" [queryParams]="{type:'menus'}" slot="end">Menu</ion-button>
+      <ion-button fill="outline" (click)="getType()" routerLink="/catalogue" [queryParams]="{type:'burgers'}" slot="end">Burger</ion-button>
+    </ion-item>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-slides pager>
+
+        <ion-slide style="background-color: green">
+          <ion-img src="assets/icon/ma.jpg"></ion-img>
+        </ion-slide>
+
+        <ion-slide style="background-color: green">
+          <ion-img src="assets/icon/mb.jpg"></ion-img>
+        </ion-slide>
+
+        <ion-slide style="background-color: green">
+          <ion-img src="assets/icon/mc.jpg"></ion-img>
+        </ion-slide>
+
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
+
+ <ion-card>
+    <ion-card-content>
+      <ng-container *ngIf="prod !==undefined">
+
+        <h1 class="text-center">Produits à Commander</h1>
+
+        <div class="container d-flex justify-content-around flex-wrap">
+
+          <app-card *ngFor="let produit of prod" [catalogues]="produit"></app-card>
+
+        </div>
+      </ng-container>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
