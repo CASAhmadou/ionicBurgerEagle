@@ -13,16 +13,16 @@
   <form id="form" name="form" #v="ngForm" (ngSubmit)="v.form.valid && send()">
         <ion-item>
           <ion-label position="stacked">Login</ion-label>
-          <ion-input type="Email" [type]="type" [placeholder]="placeholder" [(ngModel)]="connect.login"  #login="ngModel"></ion-input>
+          <ion-input type="text" [type]="type" [placeholder]="placeholder" [(ngModel)]="connect.login" name="email" #login="ngModel" required></ion-input>
           <span class="form_error" *ngIf="login.errors && v.submitted">*obligatoire</span>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Password</ion-label>
-          <ion-input type="Password" name="password" [type]="type" [placeholder]="placeholder" [(ngModel)]="connect.password" #password="ngModel"></ion-input>
+          <ion-input type="password" name="password" [type]="type" [placeholder]="placeholder" [(ngModel)]="connect.password" #password="ngModel" required></ion-input>
           <span class="form_error" *ngIf="password.errors && v.submitted">*obligatoire</span>
         </ion-item>
-        <ion-button expand="block" shape="round">CONNEXION</ion-button>
+        <ion-button expand="block" type="submit" shape="round">CONNEXION</ion-button>
   </form>
   <p>Savourez les meilleurs Burger de Dakar</p>
 
-</ion-content> 
+</ion-content>

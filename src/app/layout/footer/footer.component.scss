@@ -6,3 +6,10 @@
   border-radius: 10px;
   background-color: #F4782F;
 }
+
+ion-toolbar{
+  --background: #F4782F;
+  ion-button{
+    text-transform: initial;
+  }
+}

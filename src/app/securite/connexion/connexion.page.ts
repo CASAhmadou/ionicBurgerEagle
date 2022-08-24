@@ -4,6 +4,7 @@ import { User } from '../shared/models/user';
 import { SessionLoginService } from '../shared/services/session-login.service';
 import { TokenLoginService } from '../shared/services/token-login.service';
 import { NgToastService } from 'ng-angular-popup';
+import { StorageService } from '../shared/services/storage.service';
 
 @Component({
   selector: 'app-connexion',
@@ -15,7 +16,8 @@ export class ConnexionPage implements OnInit {
   type:string
   placeholder:string
   constructor(private sessionLogin: SessionLoginService,private tok: TokenLoginService,
-    private router:Router, private route: ActivatedRoute, private toast: NgToastService) { }
+    private router:Router, private route: ActivatedRoute, private toast: NgToastService,
+    private storage: StorageService) { }
 
   ngOnInit(): void {
   }

@@ -14,9 +14,9 @@ export class TokenLoginService {
     let tokInfo = this.getDecodedAccessToken(token)
     // console.log(tokInfo)
       if (tokInfo.roles[0] == ["ROLE_CLIENT"]) {
-        this.router.navigate(['commande/panier'])
+        this.router.navigate(['catalogue'])
       }else{
-        this.router.navigate(['gestionnaire'])
+        this.router.navigate(['livreur'])
       }
     localStorage.setItem('token', token)
   }
