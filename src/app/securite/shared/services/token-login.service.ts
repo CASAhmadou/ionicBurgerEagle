@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import jwt_decode from "jwt-decode"
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenLoginService {
 
-  constructor(private router : Router) { }
+  constructor(private router : Router, private storage: StorageService) { }
 
   //garde token
   valueToken(token:string):void{
@@ -18,7 +19,7 @@ export class TokenLoginService {
       }else{
         this.router.navigate(['livreur'])
       }
-    localStorage.setItem('token', token)
+      this.storage.set('token', token)
   }
 
   getDecodedAccessToken(token: string): any {
@@ -30,36 +31,36 @@ export class TokenLoginService {
   }
 
   //vues du gestionnaie
-  viewGestionnaire():boolean{
-    const gest = this.haveAccess()
-    return gest
-  }
+  // viewGestionnaire():boolean{
+  //   const gest = this.haveAccess()
+  //   return gest
+  // }
 
   onLogin():boolean{
-    const token = localStorage.getItem('token')
+    const token = this.storage.get('storage')
     return !! token
   }
 
   supToken():void{
-    localStorage.removeItem('token')
+    localStorage.
     this.router.navigate(['/'])
   }
 
   ouToken():any{
-    let token = localStorage.getItem('token') || ''
+    let token = this.storage.get('storage')
     return token
   }
 
   haveAccess(){
-    var loginToken= localStorage.getItem('token') || ''
-    var _extractedToken=loginToken.split('.')[1]
-    var _atobdata= atob(_extractedToken)
-    var _finaldata=JSON.parse(_atobdata)
+    var loginToken= this.storage.get('storage') || ''
+    // var _extractedToken=loginToken.split('.')[1]
+    // var _atobdata= atob(_extractedToken)
+    // var _finaldata=JSON.parse(_atobdata)
 
-    if(_finaldata.roles[0]=="ROLE_CLIENT"){
-      return true
-    }
-    return false
+    // if(_finaldata.roles[0]=="ROLE_CLIENT"){
+    //   return true
+    // }
+    // return false
   }
 
   getId():any{

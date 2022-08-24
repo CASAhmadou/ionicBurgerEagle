@@ -10,14 +10,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { SecuritePageModule } from './securite/securite.module';
 import { FormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage-angular';
-
+import { Drivers, Storage } from '@ionic/storage';
 import { TokenInterceptorService } from './securite/shared/services/token-interceptor.service';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,IonicModule.forRoot(),
-    IonicStorageModule.forRoot(),
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+     driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage]
+    }),
     AppRoutingModule,HttpClientModule,
     RouterModule,HttpClientModule,
     LayoutPageModule,SecuritePageModule,RouterModule,

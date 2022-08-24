@@ -5,6 +5,7 @@ import { SessionLoginService } from '../shared/services/session-login.service';
 import { TokenLoginService } from '../shared/services/token-login.service';
 import { NgToastService } from 'ng-angular-popup';
 import { StorageService } from '../shared/services/storage.service';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 @Component({
   selector: 'app-connexion',
@@ -19,8 +20,11 @@ export class ConnexionPage implements OnInit {
     private router:Router, private route: ActivatedRoute, private toast: NgToastService,
     private storage: StorageService) { }
 
-  ngOnInit(): void {
-  }
+
+    async ngOnInit() {
+      await this.storage.defineDriver(IonicSecureStorageDriver);
+      await this.storage.create();
+    }
 
   connect: User ={}
 
@@ -39,3 +43,7 @@ export class ConnexionPage implements OnInit {
     )}
 
 }
+function IonicSecureStorageDriver(IonicSecureStorageDriver: any) {
+  throw new Error('Function not implemented.');
+}
+

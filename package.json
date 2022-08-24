@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@auth0/angular-jwt": "^5.0.2",
     "@capacitor/app": "4.0.1",
     "@capacitor/core": "4.1.0",
     "@capacitor/haptics": "4.0.1",
@@ -28,11 +29,13 @@
     "@ionic/lab": "^3.2.13",
     "@ionic/storage-angular": "^3.0.6",
     "jwt-decode": "^3.1.2",
+    "localforage": "^1.10.0",
     "ng-angular-popup": "^0.1.2",
     "ng-popups": "^9.0.0",
     "ng2-search-filter": "^0.5.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
+    "url-polyfill": "^1.1.12",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
