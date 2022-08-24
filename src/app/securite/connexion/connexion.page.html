@@ -1,0 +1,28 @@
+<!--  <ion-header>
+  <ion-toolbar>
+    <ion-title>connexion</ion-title>
+  </ion-toolbar>
+</ion-header>
+ -->
+
+<ion-content>
+  <div id="header">
+    <h1>Connectez-vous !</h1>
+    <img src="assets/icon/logo.png" alt="">
+  </div>
+  <form id="form" name="form" #v="ngForm" (ngSubmit)="v.form.valid && send()">
+        <ion-item>
+          <ion-label position="stacked">Login</ion-label>
+          <ion-input type="Email" [type]="type" [placeholder]="placeholder" [(ngModel)]="connect.login"  #login="ngModel"></ion-input>
+          <span class="form_error" *ngIf="login.errors && v.submitted">*obligatoire</span>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input type="Password" name="password" [type]="type" [placeholder]="placeholder" [(ngModel)]="connect.password" #password="ngModel"></ion-input>
+          <span class="form_error" *ngIf="password.errors && v.submitted">*obligatoire</span>
+        </ion-item>
+        <ion-button expand="block" shape="round">CONNEXION</ion-button>
+  </form>
+  <p>Savourez les meilleurs Burger de Dakar</p>
+
+</ion-content> 

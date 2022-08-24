@@ -1,0 +1,20 @@
+.btn{
+  margin: 5px;
+  width: 90px;
+  height: 50px;
+  border: 1px solid #F4782F ;
+  border-radius: 10px;
+  background-color: #F4782F;
+}
+.con{
+  right: 0;
+}
+
+ion-toolbar{
+  --background:#F4782F;
+
+  ion-button{
+    text-transform: initial;
+  }
+}
+

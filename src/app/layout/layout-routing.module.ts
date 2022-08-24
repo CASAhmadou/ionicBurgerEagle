@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CataloguePage } from './catalogue.page';
+import { FooterComponent } from './footer/footer.component';
+
 
 const routes: Routes = [
   {
-    path: '',component: CataloguePage},
-  { path: 'catalogue', component: CataloguePage},
+    path: '',
+    component: FooterComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class CataloguePageRoutingModule {}
+export class LayoutPageRoutingModule {}

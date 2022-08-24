@@ -1,34 +1,55 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>catalogue</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
 
-    <ion-item class="btn">
-      <ion-button fill="outline" (click)="getType()" routerLink="/catalogue" [queryParams]="{type:'menus'}" slot="end">Menu</ion-button>
-      <ion-button fill="outline" (click)="getType()" routerLink="/catalogue" [queryParams]="{type:'burgers'}" slot="end">Burger</ion-button>
+    <ion-item class="d-flex justify-content-around">
+
+      <button ion-item class="btn" (click)="getType()" [queryParams]="{type:'menus'}" routerLink="/catalogue">
+        <ion-icon name="fast-food-outline" item-start></ion-icon>
+        Menu
+      </button>
+
+      <button ion-item class="btn" (click)="getType()" [queryParams]="{type:'burgers'}" routerLink="/catalogue">
+        <ion-icon name="fast-food-outline" item-start></ion-icon>
+        Burger
+      </button>
+
+      <button ion-item class="btn" (click)="presentAlert()" routerLink="/catalogue" [queryParams]="{prix:'burgers'}">
+        <ion-icon name="cash-outline" (click)="getPrix()"  item-start></ion-icon>
+        Prix
+      </button>
+      <!-- <ion-button fill="outline" (click)="getPrix()" routerLink="/catalogue" [queryParams]="{type:'burgers'}" slot="end">Prix</ion-button> -->
     </ion-item>
+
 
 <ion-content>
   <ion-card>
     <ion-card-content>
-      <ion-slides pager>
+      <ion-slides pager="true" class="ion-margin-top" [options]="imageOpt">
 
-        <ion-slide style="background-color: green">
-          <ion-img src="assets/icon/ma.jpg"></ion-img>
+        <ion-slide>
+          <ion-card class="img">
+            <ion-img src="assets/icon/ma.jpg"></ion-img>
+          </ion-card>
         </ion-slide>
 
-        <ion-slide style="background-color: green">
-          <ion-img src="assets/icon/mb.jpg"></ion-img>
+        <ion-slide>
+          <ion-card class="img">
+            <ion-img src="assets/icon/mb.jpg"></ion-img>
+          </ion-card>
         </ion-slide>
 
-        <ion-slide style="background-color: green">
-          <ion-img src="assets/icon/mc.jpg"></ion-img>
+        <ion-slide>
+          <ion-card class="img">
+            <ion-img src="assets/icon/mc.jpg"></ion-img>
+          </ion-card>
         </ion-slide>
 
       </ion-slides>
     </ion-card-content>
   </ion-card>
+
+
+  <!-- <ion-range [ticks]="true" [snaps]="true" [min]="0" [max]="10"></ion-range> -->
+
 
  <ion-card>
     <ion-card-content>
@@ -39,10 +60,11 @@
         <div class="container d-flex justify-content-around flex-wrap">
 
           <app-card *ngFor="let produit of prod" [catalogues]="produit"></app-card>
-
         </div>
       </ng-container>
+      <!-- <ion-range [min]="500" [max]="10000" [value]="3000" [pin]="true" [ticks]="true" [snaps]="true"></ion-range> -->
+
     </ion-card-content>
   </ion-card>
-
 </ion-content>
+<app-footer></app-footer>

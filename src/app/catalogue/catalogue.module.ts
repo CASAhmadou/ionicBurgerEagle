@@ -6,6 +6,9 @@ import { CataloguePageRoutingModule } from './catalogue-routing.module';
 import { CataloguePage } from './catalogue.page';
 import { CardComponent } from './component/card/card.component';
 import { RouterModule } from '@angular/router';
+import { LayoutPageModule } from '../layout/layout.module';
+import { FooterComponent } from '../layout/footer/footer.component';
+import { SecuritePageModule } from '../securite/securite.module';
 
 @NgModule({
   imports: [
@@ -13,9 +16,11 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     IonicModule,
     CataloguePageRoutingModule,
-    RouterModule
+    RouterModule,
+    LayoutPageModule,
+    SecuritePageModule
   ],
-    declarations: [CataloguePage,CardComponent
-    ]
+
+    declarations: [CataloguePage,CardComponent]
 })
 export class CataloguePageModule {}
