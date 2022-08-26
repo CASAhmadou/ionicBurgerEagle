@@ -7,15 +7,15 @@
         <ion-icon name="cash-outline" item-start></ion-icon>
         Catalogue
       </button>
-      <button ion-item class="btn">
+      <button ion-item class="btn" (click)="mesCommandes()" *ngIf="isConnected">
         <ion-icon name="cart" item-start></ion-icon>
         Commandes
       </button>
 
       <button ion-item class="btn">
-        <ion-icon name="cart" item-start></ion-icon>
+        <ion-icon name="cart" item-start></ion-icon><br>
         Panier
       </button>
-  
+
   </ion-toolbar>
 </ion-footer>

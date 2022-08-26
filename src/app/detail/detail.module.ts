@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { DetailPageRoutingModule } from './detail-routing.module';
 
 import { DetailPage } from './detail.page';
-import { CardComponent } from './card/card.component';
 import { LayoutPageModule } from '../layout/layout.module';
 import { SecuritePageModule } from '../securite/securite.module';
 
@@ -20,6 +19,6 @@ import { SecuritePageModule } from '../securite/securite.module';
     LayoutPageModule,
     SecuritePageModule
   ],
-  declarations: [DetailPage, CardComponent]
+  declarations: [DetailPage]
 })
 export class DetailPageModule {}

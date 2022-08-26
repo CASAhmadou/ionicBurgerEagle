@@ -12,6 +12,8 @@ const url = environment.apiUrl
 export class CatalogueService {
 
   private linkBackEnd: string = `${url}/catalogues`
+  private apiDetail=`${url}/details`
+
 
   constructor(private http: HttpClient){}
 
@@ -25,6 +27,16 @@ export class CatalogueService {
         return catalogues
       })
     )
+  }
+
+  getProduit=(id:any)=>{
+    return this.http.get<any>(
+      `${this.apiDetail}/${id}`).pipe(
+          map(data=>{
+            // console.log(data)
+            return data
+          })
+      )
   }
 
 }

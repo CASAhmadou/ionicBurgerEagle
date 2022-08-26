@@ -28,6 +28,7 @@
     "@ionic/angular": "^6.1.9",
     "@ionic/lab": "^3.2.13",
     "@ionic/storage-angular": "^3.0.6",
+    "angular-split": "^13.2.0",
     "jwt-decode": "^3.1.2",
     "localforage": "^1.10.0",
     "ng-angular-popup": "^0.1.2",

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Liste de mes Commandes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngFor="let commande of commandes">
+    <ion-list>
+      <ion-item>
+
+        <p>n°{{commande.numeroCommande}}</p>
+        <p>{{commande.montantCommande}}</p>
+        <p>{{commande.dateCommande | date:'dd-MM-YY'}}</p>
+        <p>{{commande.etat}}</p>
+
+        <!-- <button ion-button clear item-end>Detail</button> -->
+          <ion-icon name="enter-outline" routerLink="/client/detail-commande/{{commande.id}}"></ion-icon>
+          <ion-icon name="close-circle-outline"></ion-icon>
+        <!-- <button ion-button clear item-end>Annuler</button> -->
+
+        <!-- <ion-accordion-group>
+          <ion-accordion value="first">
+            <ion-item slot="header" color="light">
+              <ion-label>First Accordion</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              First Content
+            </div>
+          </ion-accordion>
+          <ion-accordion value="second">
+            <ion-item slot="header" color="light">
+              <ion-label>Second Accordion</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              Second Content
+            </div>
+          </ion-accordion>
+          <ion-accordion value="third">
+            <ion-item slot="header" color="light">
+              <ion-label>Third Accordion</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              Third Content
+            </div>
+          </ion-accordion>
+        </ion-accordion-group> -->
+
+
+
+      </ion-item>
+    </ion-list>
+  </ng-container>
+</ion-content>
+
+<app-footer></app-footer>

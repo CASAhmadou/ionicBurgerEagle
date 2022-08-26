@@ -13,11 +13,10 @@ export class TokenLoginService {
   //garde token
   valueToken(token:string):void{
     let tokInfo = this.getDecodedAccessToken(token)
-    // console.log(tokInfo)
       if (tokInfo.roles[0] == ["ROLE_CLIENT"]) {
         this.router.navigate(['catalogue'])
       }else{
-        this.router.navigate(['livreur'])
+        this.router.navigate(['/'])
       }
       this.storage.set('token', token)
   }
@@ -30,8 +29,24 @@ export class TokenLoginService {
     }
   }
 
+  haveAccess(){
+    // let tokInfo = this.getDecodedAccessToken(token)
+    var loginToken= this.storage.get('storage')
+    var _extractedToken=loginToken.then(res=>{
+
+    })
+    // var _extractedToken=loginToken.split('.')[1]
+    // var _atobdata= atob(_extractedToken)
+    // var _finaldata=JSON.parse(_atobdata)
+
+    // if(_finaldata.roles[0]=="ROLE_CLIENT"){
+    //   return true
+    // }
+    return false
+  }
+
   //vues du gestionnaie
-  // viewGestionnaire():boolean{
+  // viewV():boolean{
   //   const gest = this.haveAccess()
   //   return gest
   // }
@@ -41,8 +56,8 @@ export class TokenLoginService {
     return !! token
   }
 
-  supToken():void{
-    localStorage.
+  async supToken():Promise<void>{
+    await this.storage.remove('token');
     this.router.navigate(['/'])
   }
 
@@ -51,21 +66,9 @@ export class TokenLoginService {
     return token
   }
 
-  haveAccess(){
-    var loginToken= this.storage.get('storage') || ''
-    // var _extractedToken=loginToken.split('.')[1]
-    // var _atobdata= atob(_extractedToken)
-    // var _finaldata=JSON.parse(_atobdata)
-
-    // if(_finaldata.roles[0]=="ROLE_CLIENT"){
-    //   return true
-    // }
-    // return false
-  }
-
-  getId():any{
-    const id= localStorage.getItem('id')
-    // console.log(id)
-    return Number(id)
-  }
+  // getId():any{
+  //   const id= localStorage.getItem('id')
+  //   // console.log(id)
+  //   return Number(id)
+  // }
 }

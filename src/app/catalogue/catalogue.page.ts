@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AlertController, IonSlides } from '@ionic/angular';
+import { Observable, range } from 'rxjs';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { Catalogue } from '../shared/models/catalogue';
 import { Produit } from '../shared/models/produits';
 import { CatalogueService } from '../shared/services/catalogue.service';
@@ -18,7 +18,8 @@ export class CataloguePage implements OnInit {
   prix!:number
 
 
-  constructor(private alertController: AlertController,private serv:CatalogueService, private route : ActivatedRoute) { }
+  constructor(private alertController: AlertController,private serv:CatalogueService,
+    private route : ActivatedRoute,  private loadingCtrl: LoadingController,) { }
 
   ngOnInit() {
     this.serv.getCatalogue().subscribe(data => {
@@ -38,12 +39,40 @@ export class CataloguePage implements OnInit {
     })
   }
 
+  onPrix: number = 0;
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Choisissez le Prix',
-      subHeader: 'Important message',
       message: `<ion-range [min]="500" [max]="10000" [value]="3000" [pin]="true" [ticks]="true" [snaps]="true"></ion-range>`,
-      buttons: ['OK'],
+      inputs: [
+        {
+          name: 'prix',
+          type: 'textarea',
+          min: 1500,
+          max:200000,
+          // step:1500
+        }
+
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+              console.log('Confirm Cancel');
+          }
+        },
+        {
+          text: 'OK',
+        handler: (alertPrix)=>{
+          console.log(alertPrix.prix)
+          this.onPrix = alertPrix.prix
+          this.serv.getCatalogue().subscribe(data =>{
+            this.prod = [...data.burgers, ...data.menus]?.filter(
+              pro => pro.prix <= this.onPrix)
+          })
+        }}],
     });
 
     await alert.present();
@@ -77,4 +106,5 @@ export class CataloguePage implements OnInit {
       deplay:3000
     }
   }
+
 }

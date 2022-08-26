@@ -18,12 +18,12 @@ export class ConnexionPage implements OnInit {
   placeholder:string
   constructor(private sessionLogin: SessionLoginService,private tok: TokenLoginService,
     private router:Router, private route: ActivatedRoute, private toast: NgToastService,
-    private storage: StorageService) { }
+    private token: StorageService) { }
 
 
     async ngOnInit() {
-      await this.storage.defineDriver(IonicSecureStorageDriver);
-      await this.storage.create();
+      await this.token.defineDriver(IonicSecureStorageDriver);
+      await this.token.create();
     }
 
   connect: User ={}

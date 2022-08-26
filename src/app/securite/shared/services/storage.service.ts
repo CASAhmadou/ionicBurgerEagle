@@ -7,8 +7,6 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { BehaviorSubject, from, Observable } from 'rxjs';
 import { take, map, switchMap } from 'rxjs/operators'
 
-const helper= new JwtHelperService();
-const TOKEN_KEY= 'jwt-token'
 @Injectable({
   providedIn: 'root'
 })
@@ -20,17 +18,18 @@ export class StorageService {
     throw new Error('Method not implemented.');
   }
 
-  public user: Observable<any>;
-  private userData= new BehaviorSubject(null);
-
   private _storage: Storage | null = null
   constructor(private storage: Storage, private http: HttpClientModule,
     private plt: Platform, private router: Router) {
     this.init()
    }
 
-  async init(){
+   behav= new BehaviorSubject<any>(false);
+   verified(){
+    return this.behav.asObservable()
+   }
 
+  async init(){
     const storage = await this.storage.create();
     this._storage= storage
   }
@@ -39,7 +38,16 @@ export class StorageService {
     this._storage?.set(key, value)
   }
 
-  public async get(storage:any){
+  public async get(token:any){
     return this.storage
   }
+
+  remove(token){
+    this.storage.remove(token)
+  }
+
+  async addData(token,id){
+    await  this.storage.set('token', token)
+    await this.storage.set('id', id)
+ }
 }

@@ -1,6 +1,8 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 
-    <ion-item class="d-flex justify-content-around">
+<ion-header>
+  <ion-toolbar class="d-flex justify-content-center">
+    <ion-item >
 
       <button ion-item class="btn" (click)="getType()" [queryParams]="{type:'menus'}" routerLink="/catalogue">
         <ion-icon name="fast-food-outline" item-start></ion-icon>
@@ -13,12 +15,13 @@
       </button>
 
       <button ion-item class="btn" (click)="presentAlert()" routerLink="/catalogue" [queryParams]="{prix:'burgers'}">
-        <ion-icon name="cash-outline" (click)="getPrix()"  item-start></ion-icon>
+        <ion-icon name="cash-outline" (click)="getPrix()"  item-start></ion-icon><br>
         Prix
       </button>
       <!-- <ion-button fill="outline" (click)="getPrix()" routerLink="/catalogue" [queryParams]="{type:'burgers'}" slot="end">Prix</ion-button> -->
     </ion-item>
-
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
   <ion-card>

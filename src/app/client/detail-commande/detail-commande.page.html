@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button routerLink="/client">
+            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    <ion-title>detail-commande</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ng-container *ngIf="detCommandes!== undefined">
+  <ion-content>
+  <!-- List of Text Items -->
+    <ion-list>
+      <ng-container *ngFor="let prod of detCommandes">
+
+        <ng-container *ngIf="prod.burger">
+          <ion-item>
+            <ion-label>{{prod.quantite}} {{prod.burger.nom}} </ion-label>
+            <ion-label>{{prod.burger.prix}}f CFA </ion-label>
+            <ion-thumbnail>
+              <img src="data:image/png;base64,{{prod?.burger.image}}">
+            </ion-thumbnail>
+          </ion-item>
+        </ng-container>
+
+        <ng-container *ngIf="prod.menu">
+          <ion-item>
+            <ion-label>{{prod.quantite}} {{prod.menu.nom}} </ion-label>
+            <ion-label>{{prod.menu.prix}}f CFA </ion-label>
+            <ion-thumbnail>
+              <img src="data:image/png;base64,{{prod?.menu.image}}">
+            </ion-thumbnail>
+          </ion-item>
+        </ng-container>
+
+        <ng-container *ngIf="prod.portionFrite">
+          <ion-item>
+            <ion-label>{{prod.quantite}} {{prod.portionFrite.nom}} </ion-label>
+            <ion-label>{{prod.portionFrite.prix}}f CFA</ion-label>
+            <ion-thumbnail>
+              <img src="data:image/png;base64,{{prod?.portionFrite.image}}">
+            </ion-thumbnail>
+          </ion-item>
+        </ng-container>
+
+        <ng-container *ngIf="prod.boissonTailleBoisson">
+          <ion-item>
+            <ion-label>{{prod.quantite}} {{prod.boissonTailleBoisson.tailleBoisson.libelle}} </ion-label>
+            <ion-label>{{prod.boissonTailleBoisson.tailleBoisson.prix}}f CFA Boisson</ion-label>
+            <!-- <ion-thumbnail>
+              <img src="data:image/png;base64,{{prod?.boissonTailleBoisson.boix²sson?.image}}">
+            </ion-thumbnail> -->
+          </ion-item>
+        </ng-container>
+
+      </ng-container>
+      <ion-badge>Montant = {{somme}}f CFA</ion-badge>
+      <!-- <ion-label>Montant = {{somme}}f CFA</ion-label> -->
+
+    </ion-list>
+
+
+      <button ion-button clear item-end (click)="recommande()">RECOMMANDER</button>
+      <button ion-button clear item-end (click)="recommande()">ANNULER</button>
+
+
+  </ion-content>
+</ng-container>
+<app-footer></app-footer>

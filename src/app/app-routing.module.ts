@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./catalogue/catalogue.module').then( m => m.CataloguePageModule)
   },
   {
-    path: 'detail',
+    path: 'detail/:type/:id',
     loadChildren: () => import('./detail/detail.module').then( m => m.DetailPageModule)
   },
   {
@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'securite',
     loadChildren: () => import('./securite/securite.module').then( m => m.SecuritePageModule)
+  },
+  {
+    path: 'client',
+    loadChildren: () => import('./client/client.module').then( m => m.ClientPageModule)
   }
 ];
 

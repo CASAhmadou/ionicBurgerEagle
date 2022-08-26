@@ -1,14 +1,62 @@
-<app-header></app-header>
 <ion-header>
   <ion-toolbar>
-    <ion-icon name="return-up-back-outline"></ion-icon>
-    <ion-title>detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/client">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-input type="number" value="333"></ion-input>
+<!-- <ion-input type="number" value="333"></ion-input> -->
 
-<ion-content>
-    <app-card></app-card>
+<ion-content >
+    <ion-card class="detail">
+        <ng-container *ngIf="(detail|async) !==null">
+
+          <ng-container *ngIf="(detail|async)?.burger?.type === 'burger'">
+              <ion-card class="det">
+                <img src="data:image/png;base64,{{(detail|async)?.burger?.image}}">
+
+              </ion-card>
+              <ion-card class="compte" (tap)="tapEvent($event)">
+                <h1>{{(detail|async)?.burger?.nom}}</h1>
+
+                <ion-badge>{{(detail|async)?.burger?.prix}}</ion-badge>
+
+                <ion-item>
+                  <ion-icon name="remove-circle-outline"></ion-icon>
+                  <ion-input type="text" placeholder="1" required></ion-input>
+                  <ion-icon name="add-circle-outline"></ion-icon>
+                </ion-item>
+
+                <ion-button color="primary">AJOUTER</ion-button>
+              </ion-card>
+          </ng-container>
+
+          <ng-container *ngIf="(detail|async)?.menu?.type === 'menu'">
+            <ion-card class="det">
+              <img src="data:image/png;base64,{{(detail|async)?.menu?.image}}">
+              <!-- <div class="card-title">Amsterdam</div> -->
+              <!-- <div class="card-subtitle">64 Listings</div> -->
+            </ion-card>
+            <ion-card class="compte" (tap)="tapEvent($event)">
+              <h1>{{(detail|async)?.menu?.nom}}</h1>
+
+              <ion-badge>{{(detail|async)?.menu?.prix}}</ion-badge>
+
+              <ion-item>
+                <ion-icon name="remove-circle-outline"></ion-icon>
+                <ion-input type="text" placeholder="1" required></ion-input>
+                <ion-icon name="add-circle-outline"></ion-icon>
+              </ion-item>
+
+              <ion-button color="primary">AJOUTER</ion-button>
+            </ion-card>
+        </ng-container>
+
+        </ng-container>
+    </ion-card>
+
 </ion-content>
 <app-footer></app-footer>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenLoginService } from 'src/app/securite/shared/services/token-login.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,private tokenLogin: TokenLoginService) { }
+  isConnected=true
+  isClient=true
+  ngOnInit() {
+    this.isConnected= this.tokenLogin.onLogin()
+  }
 
-  ngOnInit() {}
+  mesCommandes(): void{
+    this.router.navigateByUrl(`client`)
+  }
 
 }
