@@ -17,6 +17,8 @@ export class ClientPage implements OnInit {
   commandes: any[]=[]
   etatSearch:any
   dateSearch:any
+  filtreEtat:string="en cours"
+  filtreDate=""
 
   constructor(private comService : CommandeService, private router: Router) { }
 

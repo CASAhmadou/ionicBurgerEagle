@@ -18,6 +18,8 @@
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Password</ion-label>
+          <!-- <input type="password" name="password" class="form-control" [(ngModel)]="connect.password" #password="ngModel" id="floatingPassword" placeholder="Password" required> -->
+
           <ion-input type="password" name="password" [type]="type" [placeholder]="placeholder" [(ngModel)]="connect.password" #password="ngModel" required></ion-input>
           <span class="form_error" *ngIf="password.errors && v.submitted">*obligatoire</span>
         </ion-item>

@@ -20,7 +20,6 @@ export class DetailCommandePage implements OnInit {
     this.id= this.routeActive.snapshot.paramMap.get('id');
     let token = this.storage.get('token')
     this.comService.commandeDetail(this.id,token).subscribe(data=>{
-      console.log(data)
       this.somme = data.montantCommande
       this.detCommandes = [...data.burgerCommandes,...data.menuCommandes,...data.boissonCommandes,...data.friteCommandes]
     })

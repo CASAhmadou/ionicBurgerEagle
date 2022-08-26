@@ -10,6 +10,8 @@ import { ClientPage } from './client.page';
 import { LayoutPageModule } from '../layout/layout.module';
 import { DetailPage } from '../detail/detail.page';
 import { DetailCommandePage } from './detail-commande/detail-commande.page';
+import { CommandeDateFilter, CommandeEtatFilter } from '../shared/services/filter.pipe';
+
 
 @NgModule({
   imports: [
@@ -19,6 +21,7 @@ import { DetailCommandePage } from './detail-commande/detail-commande.page';
     ClientPageRoutingModule,
     LayoutPageModule
   ],
-  declarations: [ClientPage,DetailCommandePage]
+
+    declarations: [ClientPage,DetailCommandePage,CommandeDateFilter,CommandeEtatFilter]
 })
 export class ClientPageModule {}

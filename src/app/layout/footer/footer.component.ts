@@ -10,10 +10,12 @@ import { TokenLoginService } from 'src/app/securite/shared/services/token-login.
 export class FooterComponent implements OnInit {
 
   constructor(private router: Router,private tokenLogin: TokenLoginService) { }
-  isConnected=true
+  isConnected=false
   isClient=true
   ngOnInit() {
-    this.isConnected= this.tokenLogin.onLogin()
+    this.tokenLogin.isConnected.asObservable().subscribe(data=>{
+      this.isConnected= data
+    })
   }
 
   mesCommandes(): void{

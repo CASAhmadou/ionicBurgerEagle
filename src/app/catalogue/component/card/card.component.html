@@ -3,18 +3,12 @@
 
       <h5 class="text-center">{{produit?.nom}}</h5>
 
-    <!--  <ion-list>
-        <ion-item>
-          <ion-label>Pokémon Yellow</ion-label>
-          <ion-label>Pokémon Yellow</ion-label>
-        </ion-item>
-      </ion-list> -->
 
       <ion-item>
         <img src="data:image/png;base64,{{produit?.image}}" class="img-thumbnail rounded" style="max-width: 20rem; height:20rem">
         <button ion-button round routerLink="/detail/{{this.produit?.type}}/{{this.produit?.id}}">Detail</button>
       </ion-item>
-
+      <!-- /detail/{{this.produit?.type}}/{{this.produit?.id}} -->
       <p class="card-text text-center">{{produit?.prix}} f CFA</p>
 
   </div>

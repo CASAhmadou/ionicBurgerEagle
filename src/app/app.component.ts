@@ -6,15 +6,16 @@ import { TokenLoginService } from './securite/shared/services/token-login.servic
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  isConnected=true
+  isConnected:boolean=false
   constructor(private tokenLogin: TokenLoginService) {}
   ngOnInit(){
-    this.isConnected= this.tokenLogin.onLogin()
+    this.tokenLogin.isConnected.asObservable().subscribe(data=>{
+      this.isConnected= data
+    })
   }
 
   deconnect(){
-    // alert('ok')
-    this.isConnected=false
+    this.tokenLogin.isConnected.next(false)
     this.tokenLogin.supToken().then(value=>{
     })
   }

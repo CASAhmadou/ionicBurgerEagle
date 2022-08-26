@@ -4,8 +4,24 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-item>
+  Filtre:
+  <button ion-button clear item-end >All</button>
+  <input type="date" placeholder="filtre par date" id="filtreByDate" [(ngModel)]="filtreDate">
+  <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="filtreEtat">
+    <option value="en cours">en cours</option>
+    <option value="disponible">disponible</option>
+    <option value="termine">termine</option>
+  </select>
+
+  <!-- <div>
+    <label>Par Date</label>
+    <input type="date" placeholder="filtre par date" id="filtreByDate" [(ngModel)]="searchTermDate">
+  </div> -->
+</ion-item>
+
 <ion-content>
-  <ng-container *ngFor="let commande of commandes">
+  <ng-container *ngFor="let commande of commandes | commandeDateFilter:filtreDate | commandeEtatFilter:filtreEtat">
     <ion-list>
       <ion-item>
 

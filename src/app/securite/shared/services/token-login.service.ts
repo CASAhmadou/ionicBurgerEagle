@@ -1,22 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import jwt_decode from "jwt-decode"
+import { NgToastService } from 'ng-angular-popup';
+import { BehaviorSubject } from 'rxjs';
 import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenLoginService {
-
-  constructor(private router : Router, private storage: StorageService) { }
+  isConnected: BehaviorSubject<boolean>=new BehaviorSubject(false)
+  constructor(private router : Router, private storage: StorageService, private toast: NgToastService) { }
 
   //garde token
   valueToken(token:string):void{
     let tokInfo = this.getDecodedAccessToken(token)
+      this.isConnected.next(true)
       if (tokInfo.roles[0] == ["ROLE_CLIENT"]) {
         this.router.navigate(['catalogue'])
+        this.toast.success({detail:"success",summary:"connexion reussie"})
       }else{
         this.router.navigate(['/'])
+        error => {
+          console.log(error)
+        this.toast.error({detail:"ERROR",summary:"login ou mot de passe incorrect"})
+        }
       }
       this.storage.set('token', token)
   }

@@ -10,3 +10,18 @@ ion-icon{
   // border-radius: 10px;
   color: #F4782F;
 }
+
+button{
+  margin: 2px;
+  border: 1px solid #F4782F ;
+  border-radius: 10px;
+  background-color: #F4782F;
+}
+
+input, select{
+  margin: .5rem;
+  border-radius: 5rem;
+  width: 8rem;
+  height: 2rem;
+  background-color: white;
+}
