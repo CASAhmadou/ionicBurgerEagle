@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers, Storage } from '@ionic/storage';
 import { TokenInterceptorService } from './securite/shared/services/token-interceptor.service';
+import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { TokenInterceptorService } from './securite/shared/services/token-interc
     RouterModule,HttpClientModule,
     LayoutPageModule,SecuritePageModule,RouterModule,
     FormsModule,Ng2SearchPipeModule,
+    IonicHeaderParallaxModule
   ],
 
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, {provide:HTTP_INTERCEPTORS, useClass:TokenInterceptorService,multi:true}],
