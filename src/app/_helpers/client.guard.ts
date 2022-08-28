@@ -9,12 +9,12 @@ import { TokenLoginService } from '../securite/shared/services/token-login.servi
 export class ClientGuard implements CanActivate {
   constructor(private token:TokenLoginService, private router: Router ){}
   canActivate() {
-    if(!this.token.haveAccess())
-    return true;
-   else{
-     this.router.navigate(['commande/liste'])
+  //   if(!this.token.clientAccess())
+  //   return true;
+  //  else{
+  //    this.router.navigate(['commande/liste'])
      return false
-   }
+  //  }
   }
 
 

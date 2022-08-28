@@ -24,30 +24,47 @@ export class StorageService {
     this.init()
    }
 
-   behav= new BehaviorSubject<any>(false);
-   verified(){
-    return this.behav.asObservable()
-   }
-
   async init(){
     const storage = await this.storage.create();
     this._storage= storage
   }
 
-  public set(key:string, value:any){
-    this._storage?.set(key, value)
+  public async set(key,id){
+    await this._storage.set('token',key)
+    await this._storage.set('id',id)
   }
 
   public async get(token:any){
-    return this.storage
+    return this.storage.get(token)
   }
 
   remove(token){
     this.storage.remove(token)
   }
 
-  async addData(token,id){
-    await  this.storage.set('token', token)
-    await this.storage.set('id', id)
- }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //  isClient= new BehaviorSubject<any>(false);
+  //  verified(){
+  //   return this.isClient.asObservable()
+  //  }
+
+//   async addData(token,id){
+//     await  this.storage.set('token', token)
+//     await this.storage.set('id', id)
+//  }
+

@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'client',
     loadChildren: () => import('./client/client.module').then( m => m.ClientPageModule)
+  },
+  {
+    path: 'livreur',
+    loadChildren: () => import('./livreur/livreur.module').then( m => m.LivreurPageModule)
   }
 ];
 

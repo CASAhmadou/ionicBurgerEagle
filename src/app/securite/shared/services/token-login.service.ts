@@ -10,23 +10,30 @@ import { StorageService } from './storage.service';
 })
 export class TokenLoginService {
   isConnected: BehaviorSubject<boolean>=new BehaviorSubject(false)
+  isClient: BehaviorSubject<boolean>=new BehaviorSubject(true)
   constructor(private router : Router, private storage: StorageService, private toast: NgToastService) { }
 
-  //garde token
-  valueToken(token:string):void{
+  valueToken(token:string,id:any):void{
     let tokInfo = this.getDecodedAccessToken(token)
       this.isConnected.next(true)
+      console.log(tokInfo.roles[0])
       if (tokInfo.roles[0] == ["ROLE_CLIENT"]) {
         this.router.navigate(['catalogue'])
         this.toast.success({detail:"success",summary:"connexion reussie"})
-      }else{
+      }
+
+      if(tokInfo.roles[0] == ["ROLE_LIVREUR"]){
+        this.router.navigate(['livreur'])
+      }
+      else{
         this.router.navigate(['/'])
         error => {
           console.log(error)
-        this.toast.error({detail:"ERROR",summary:"login ou mot de passe incorrect"})
-        }
-      }
-      this.storage.set('token', token)
+          this.toast.error({detail:"ERROR",summary:"login ou mot de passe incorrect"})
+
+      }}
+
+      this.storage.set(token,id)
   }
 
   getDecodedAccessToken(token: string): any {
@@ -37,19 +44,11 @@ export class TokenLoginService {
     }
   }
 
-  haveAccess(){
-    // let tokInfo = this.getDecodedAccessToken(token)
-    var loginToken= this.storage.get('storage')
-    var _extractedToken=loginToken.then(res=>{
-
-    })
-    // var _extractedToken=loginToken.split('.')[1]
-    // var _atobdata= atob(_extractedToken)
-    // var _finaldata=JSON.parse(_atobdata)
-
-    // if(_finaldata.roles[0]=="ROLE_CLIENT"){
-    //   return true
-    // }
+  clientAccess(token:string){
+    let tokInfo = this.getDecodedAccessToken(token)
+    if (tokInfo.roles[0] == ["ROLE_CLIENT"]) {
+      return true
+    }
     return false
   }
 

@@ -12,7 +12,6 @@ export class SessionLoginService {
 
   private login_check = `${url}/login_check`
 
-
   constructor(private http:HttpClient) { }
 
   nameLogin(users: User): Observable<Token>{

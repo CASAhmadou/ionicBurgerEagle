@@ -34,9 +34,6 @@ export class DetailPage implements OnInit {
     many : any[] = []
     quantite = 0
     boissonDuMenu: Produit[]=[]
-    @Input() isPanier = true;
-    @Input('item') burg : BurgerCommande | null=null;
-    @Input('itemMenu') men : MenuCommande | null=null;
 
     @Output() index: EventEmitter<any> = new EventEmitter();
     @Output() MontantTotal: EventEmitter<any> = new EventEmitter();
@@ -45,7 +42,7 @@ export class DetailPage implements OnInit {
     this.id=this.route.snapshot.paramMap.get('id')
     this.type=this.route.snapshot.paramMap.get('type')
     this.detail=this.serv.getProduit(this.id)
-    console.log(this.detail)
+    // console.log(this.detail)
   }
 
 

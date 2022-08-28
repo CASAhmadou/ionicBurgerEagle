@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button routerLink="/client">
+      <ion-button routerLink="/catalogue">
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -9,10 +9,10 @@
 </ion-header>
 
 <!-- <ion-input type="number" value="333"></ion-input> -->
-<ion-header imageUrl="https://picsum.photos/350"
+<!-- <ion-header imageUrl="https://picsum.photos/350"
 parallax  height="350"
 bgPosition="top">
-</ion-header> 
+</ion-header>  -->
 
 <ion-content >
     <ion-card class="detail">
@@ -49,7 +49,7 @@ bgPosition="top">
 
               <ion-badge>{{(detail|async)?.menu?.prix}}</ion-badge>
 
-              <ion-item>
+              <ion-item class="number">
                 <ion-icon name="remove-circle-outline"></ion-icon>
                 <ion-input type="text" placeholder="1" required></ion-input>
                 <ion-icon name="add-circle-outline"></ion-icon>

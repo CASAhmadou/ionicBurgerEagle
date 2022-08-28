@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Liste de mes Commandes à livrer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-item>
+  Filtre:
+  <button ion-button clear item-end >All</button>
+  <input type="date" placeholder="filtre par date" id="filtreByDate">
+  <select class="form-control" id="exampleFormControlSelect1">
+    <option value="en cours">en cours</option>
+    <option value="disponible">disponible</option>
+    <option value="termine">termine</option>
+  </select>
+
+</ion-item>
+
+<ng-container *ngIf="livrables === null">
+  <ion-content>Pas de Livraisons disponible!</ion-content>
+</ng-container>
+
+<ion-content>
+  <ng-container *ngIf="livrables !== null">
+    <ion-list *ngFor="let livraison of livrables">
+      <ng-container *ngFor="let commande of livraison.commandes">
+        <ion-item>
+
+          <p>{{commande.client.prenom}} - {{commande.client.nom}} {{commande.client.telephone}}</p>
+          <p>{{commande.zone.libelle}} - {{commande.zone.prix}}</p>
+          <p>Mnt Total {{commande.montantCommande}}f</p>
+
+            <ion-icon name="enter-outline"></ion-icon>
+            <ion-icon name="close-circle-outline"></ion-icon>
+
+        </ion-item>
+    </ng-container>
+    </ion-list>
+  </ng-container>
+</ion-content>
+
+<app-footer></app-footer>

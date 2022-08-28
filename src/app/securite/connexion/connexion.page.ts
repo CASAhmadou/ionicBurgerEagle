@@ -33,8 +33,7 @@ export class ConnexionPage implements OnInit {
   send():void{
     this.sessionLogin.nameLogin(this.connect).subscribe(
       data => {
-        this.tok.valueToken(data.token)
-
+        this.tok.valueToken(data.token,data.id)
       }
       )
     }

@@ -24,7 +24,6 @@ export class CommandeService {
         'Authorization':`Bearer ${this.token.ouToken()}`
       })
     }
-
     return this.http.post(this.commandeUrl,JSON.stringify(panier),authorizTok)
   }
 
