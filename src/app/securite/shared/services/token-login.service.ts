@@ -9,19 +9,18 @@ import { StorageService } from './storage.service';
   providedIn: 'root'
 })
 export class TokenLoginService {
-  isConnected: BehaviorSubject<boolean>=new BehaviorSubject(false)
-  isClient: BehaviorSubject<boolean>=new BehaviorSubject(true)
+  isConnected: BehaviorSubject<boolean> = new BehaviorSubject(false)
+  isClient: BehaviorSubject<boolean> = new BehaviorSubject(true)
   constructor(private router : Router, private storage: StorageService, private toast: NgToastService) { }
 
   valueToken(token:string,id:any):void{
     let tokInfo = this.getDecodedAccessToken(token)
       this.isConnected.next(true)
-      console.log(tokInfo.roles[0])
+      console.log(this.isConnected)
       if (tokInfo.roles[0] == ["ROLE_CLIENT"]) {
         this.router.navigate(['catalogue'])
         this.toast.success({detail:"success",summary:"connexion reussie"})
       }
-
       if(tokInfo.roles[0] == ["ROLE_LIVREUR"]){
         this.router.navigate(['livreur'])
       }
@@ -30,9 +29,7 @@ export class TokenLoginService {
         error => {
           console.log(error)
           this.toast.error({detail:"ERROR",summary:"login ou mot de passe incorrect"})
-
       }}
-
       this.storage.set(token,id)
   }
 
@@ -44,13 +41,37 @@ export class TokenLoginService {
     }
   }
 
-  clientAccess(token:string){
+  //   token2 = this.storage.get('token').then((data) => {
+//     var tokenI:string  = data;
+//     var decoded: any = jwt_decode(tokenI);
+//     if(decoded.roles[0] == ["ROLE_CLIENT"] ){
+//         this.role = "client"
+//     }
+//      if(decoded.roles[0] == ["ROLE_LIVREUR"]){
+//       this.role = "livreur"
+//     }
+// })
+
+  clientAccess(token):boolean{
     let tokInfo = this.getDecodedAccessToken(token)
+    // let tokInfo = this.storage.set('token','id')
     if (tokInfo.roles[0] == ["ROLE_CLIENT"]) {
       return true
     }
     return false
   }
+
+  // haveAccess(){
+  //   var loginToken= localStorage.getItem('token') || ''
+  //   var _extractedToken=loginToken.split('.')[1]
+  //   var _atobdata= atob(_extractedToken)
+  //   var _finaldata=JSON.parse(_atobdata)
+
+  //   if(_finaldata.roles[0]=="ROLE_CLIENT"){
+  //     return true
+  //   }
+  //   return false
+  // }
 
   //vues du gestionnaie
   // viewV():boolean{
@@ -63,8 +84,8 @@ export class TokenLoginService {
     return !! token
   }
 
-  async supToken():Promise<void>{
-    await this.storage.remove('token');
+  supToken(){
+    this.storage.remove('token','id');
     this.router.navigate(['/'])
   }
 

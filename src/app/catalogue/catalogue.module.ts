@@ -18,7 +18,8 @@ import { SecuritePageModule } from '../securite/securite.module';
     CataloguePageRoutingModule,
     RouterModule,
     LayoutPageModule,
-    SecuritePageModule
+    SecuritePageModule,
+    
   ],
 
     declarations: [CataloguePage,CardComponent]

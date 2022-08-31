@@ -18,12 +18,6 @@ export class LivraisonService {
 
   private commandeZoneUrl: string = 'http://127.0.0.1:8000/api/zones'
 
-  // private livreurUrl: string = 'http://127.0.0.1:8000/api/livreurs'
-
-  // private livraisonCreateUrl:string = 'http://127.0.0.1:8000/api/livraisons'
-
-  // private livraisonUrl:string = 'http://127.0.0.1:8000/api/livraisons'
-
   private livraisonEditUrl:string = 'http://127.0.0.1:8000/api/livraisons'
 
   private livraisonLivreurUrl:string = 'http://127.0.0.1:8000/api/livraisons'

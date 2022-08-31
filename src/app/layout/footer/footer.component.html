@@ -7,14 +7,25 @@
         <ion-icon name="cash-outline" item-start></ion-icon>
         Catalogue
       </button>
+
       <button ion-item class="btn" (click)="mesCommandes()" *ngIf="isConnected">
         <ion-icon name="cart" item-start></ion-icon>
         Commandes
       </button>
 
-      <button ion-item class="btn">
+      <button ion-item class="btn" *ngIf="!isConnected">
         <ion-icon name="cart" item-start></ion-icon><br>
         Panier
+      </button>
+
+      <button ion-item class="btn" *ngIf="!isConnected">
+        <ion-icon name="help-outline"></ion-icon><br>
+        Aide
+      </button>
+
+      <button ion-item class="btn" routerLink="/scanner" *ngIf="isConnected">
+        <ion-icon name="qr-code-outline"></ion-icon><br>
+        Scanner
       </button>
 
   </ion-toolbar>

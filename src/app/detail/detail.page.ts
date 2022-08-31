@@ -28,12 +28,14 @@ export class DetailPage implements OnInit {
 
     private type: any =""
     private id: any = 0
-    qte = 0
+    qte:number = 1
     vide = 0
     disabled_attr = false
     many : any[] = []
     quantite = 0
     boissonDuMenu: Produit[]=[]
+
+
 
     @Output() index: EventEmitter<any> = new EventEmitter();
     @Output() MontantTotal: EventEmitter<any> = new EventEmitter();

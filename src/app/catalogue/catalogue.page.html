@@ -23,6 +23,12 @@
   </ion-toolbar>
 </ion-header>
 
+<ng-container *ngIf="prod ===undefined">
+  <ion-content>
+    <app-loader></app-loader>
+  </ion-content>
+</ng-container>
+
 <ion-content>
   <ion-card>
     <ion-card-content>

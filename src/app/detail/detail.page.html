@@ -13,6 +13,11 @@
 parallax  height="350"
 bgPosition="top">
 </ion-header>  -->
+<ng-container *ngIf="(detail|async) === null">
+  <ion-content>
+    <app-loader></app-loader>
+  </ion-content>
+</ng-container>
 
 <ion-content >
     <ion-card class="detail">
@@ -54,6 +59,13 @@ bgPosition="top">
                 <ion-input type="text" placeholder="1" required></ion-input>
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-item>
+
+              <!-- <div class="form-outline">
+                <input [(ngModel)]="qte" id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
+                <input [(ngModel)]="qte" id="form1" min="1" name="quantity" value={{qte}} type="number" class="form-control" />
+              </div>
+
+              <ion-button  class="btn size" (click)="inc()" ></ion-button> -->
 
               <ion-button color="primary">AJOUTER</ion-button>
             </ion-card>

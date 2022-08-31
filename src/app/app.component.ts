@@ -10,13 +10,13 @@ export class AppComponent {
   constructor(private tokenLogin: TokenLoginService) {}
   ngOnInit(){
     this.tokenLogin.isConnected.asObservable().subscribe(data=>{
+      // console.log(data);
       this.isConnected= data
     })
   }
 
   deconnect(){
     this.tokenLogin.isConnected.next(false)
-    this.tokenLogin.supToken().then(value=>{
-    })
+    this.tokenLogin.supToken()
   }
 }

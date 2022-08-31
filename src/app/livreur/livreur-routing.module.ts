@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: LivreurPage
+  },
+  {
+    path: 'code-qr/:id',
+    loadChildren: () => import('../livreur/code-qr/code-qr.module').then( m => m.CodeQrPageModule)
   }
 ];
 

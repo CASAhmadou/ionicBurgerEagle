@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Qr code</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button class="all-write" defaultHref="livreur"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="code">
+    <qrcode [qrdata]="qrCode"  [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
+</ion-content>

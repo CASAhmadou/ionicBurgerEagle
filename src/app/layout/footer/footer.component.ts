@@ -21,5 +21,4 @@ export class FooterComponent implements OnInit {
   mesCommandes(): void{
     this.router.navigateByUrl(`client`)
   }
-
 }

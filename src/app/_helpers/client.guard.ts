@@ -7,6 +7,7 @@ import { TokenLoginService } from '../securite/shared/services/token-login.servi
   providedIn: 'root'
 })
 export class ClientGuard implements CanActivate {
+
   constructor(private token:TokenLoginService, private router: Router ){}
   canActivate() {
   //   if(!this.token.clientAccess())
@@ -16,6 +17,4 @@ export class ClientGuard implements CanActivate {
      return false
   //  }
   }
-
-
 }

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Liste de mes Commandes à livrer</ion-title>
+    <ion-title>Liste Commandes à livrer</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,12 +16,15 @@
 
 </ion-item>
 
-<ng-container *ngIf="livrables === null">
-  <ion-content>Pas de Livraisons disponible!</ion-content>
+<ng-container *ngIf="livrables === undefined">
+    <ion-content>
+      <app-loader></app-loader>
+      <h2>Pas de Livraisons disponible!</h2>
+    </ion-content>
 </ng-container>
 
 <ion-content>
-  <ng-container *ngIf="livrables !== null">
+  <ng-container *ngIf="livrables !== undefined">
     <ion-list *ngFor="let livraison of livrables">
       <ng-container *ngFor="let commande of livraison.commandes">
         <ion-item>
@@ -30,8 +33,7 @@
           <p>{{commande.zone.libelle}} - {{commande.zone.prix}}</p>
           <p>Mnt Total {{commande.montantCommande}}f</p>
 
-            <ion-icon name="enter-outline"></ion-icon>
-            <ion-icon name="close-circle-outline"></ion-icon>
+            <ion-icon name="enter-outline" routerLink="code-qr/{{commande.id}}"></ion-icon>
 
         </ion-item>
     </ng-container>

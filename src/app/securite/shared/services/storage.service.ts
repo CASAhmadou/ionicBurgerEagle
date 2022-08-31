@@ -38,8 +38,9 @@ export class StorageService {
     return this.storage.get(token)
   }
 
-  remove(token){
+  remove(token,id){
     this.storage.remove(token)
+    this.storage.remove(id)
   }
 
 

@@ -25,7 +25,7 @@ export class LivreurPage implements OnInit {
     })
     this.livraisonServ.commandeByLivreur(this.token).subscribe(data=>{
       this.livrables= data.filter(li=>li.livreur.id === this.id)
-      console.log(this.livrables)
+      // console.log(this.livrables)
     })
   }
 

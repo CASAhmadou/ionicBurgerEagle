@@ -13,6 +13,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers, Storage } from '@ionic/storage';
 import { TokenInterceptorService } from './securite/shared/services/token-interceptor.service';
 import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,11 +26,10 @@ import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
     }),
     AppRoutingModule,HttpClientModule,
     RouterModule,HttpClientModule,
-    LayoutPageModule,SecuritePageModule,RouterModule,
+    SecuritePageModule,RouterModule,
     FormsModule,Ng2SearchPipeModule,
-    IonicHeaderParallaxModule
+    IonicHeaderParallaxModule,ZXingScannerModule
   ],
-
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, {provide:HTTP_INTERCEPTORS, useClass:TokenInterceptorService,multi:true}],
   bootstrap: [AppComponent],
 })

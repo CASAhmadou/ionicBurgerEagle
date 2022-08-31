@@ -9,6 +9,12 @@
   </ion-toolbar>
 </ion-header>
 
+<ng-container *ngIf="detCommandes ===undefined">
+  <ion-content>
+    <app-loader></app-loader>
+  </ion-content>
+</ng-container>
+
 <ng-container *ngIf="detCommandes!== undefined">
   <ion-content>
   <!-- List of Text Items -->

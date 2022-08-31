@@ -6,9 +6,9 @@ import { IonicModule } from '@ionic/angular';
 
 import { LayoutPageRoutingModule } from './layout-routing.module';
 import { RouterModule } from '@angular/router';
-
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import { HeaderComponent } from './header/header.component';
     LayoutPageRoutingModule,
     RouterModule
   ],
-  declarations: [FooterComponent,HeaderComponent],
-  exports:[FooterComponent,HeaderComponent]
+  declarations: [FooterComponent,HeaderComponent,LoaderComponent],
+  exports:[FooterComponent,HeaderComponent,LoaderComponent]
 })
 export class LayoutPageModule {}

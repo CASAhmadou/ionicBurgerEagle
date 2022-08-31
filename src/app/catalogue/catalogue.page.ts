@@ -81,14 +81,12 @@ export class CataloguePage implements OnInit {
 
 
   getPrix(){
-
     this.route.queryParams.subscribe(params => {
       this.prix=params["prix"]
       }
     );
     this.serv.getCatalogue().subscribe(data => {
       if (this.prix== 10000) {
-
         this.prod = data.menus
         console.log(this.prod)
       }
